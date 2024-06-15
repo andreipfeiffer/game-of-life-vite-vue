@@ -38,6 +38,7 @@
     <br />
     <div style="display: flex; align-items: center;">
       <button @click="store.togglePlay()">{{ store.play ? "Stop" : "Play" }}</button>
+      <button @click="store.updateNextPopulation()">Next</button>
       <button v-if="store.preset" @click="reloadPreset" style="margin-left: -1px;">
         ↺
       </button>
