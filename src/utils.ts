@@ -43,3 +43,39 @@ export function getNeighbors(
     grid[nextY][nextX], // bottom right
   ];
 }
+
+export function getNextPopulation(grid: Grid): Grid {
+  window.performance.mark("getNextPopulationStart");
+    
+  const next: Grid = [];
+  
+  for (let row = 0; row < grid.length; row += 1) {
+    next[row] = [];
+    window.performance.mark("rowStart");
+
+    for (let col = 0; col < grid[row].length; col += 1) {
+      const isAlive = !!grid[row][col];
+      const neighbors = getNeighbors(grid, row, col);
+      const liveNeighbors = neighbors.filter((cell) => !!cell);
+      
+      if (liveNeighbors.length === 3) {
+        next[row][col] = true;
+      } else if (liveNeighbors.length === 2 && isAlive) {
+        next[row][col] = true;
+      } else {
+        next[row][col] = false;
+      }
+    }
+    window.performance.mark("rowEnd");
+    window.performance.measure("🚣 row", "rowStart", "rowEnd");
+  }
+
+  window.performance.mark("getNextPopulationEnd");
+  window.performance.measure(
+    "🐌 getNextPopulation",
+    "getNextPopulationStart",
+    "getNextPopulationEnd"
+  );
+
+  return next;
+}

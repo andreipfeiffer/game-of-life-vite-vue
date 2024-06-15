@@ -23,21 +23,14 @@ const presets = getPresets();
 let timeoutId: number;
 
 watchEffect(() => {
-  const msDelay = store.play ? LifetimeValues[store.lifetime].value : -1;
+  const msDelay = store.play ? LifetimeValues[store.lifetime].value : 0;
 
   clearTimeout(timeoutId);
   cancelAnimationFrame(timeoutId);
 
-  if (msDelay < 0) {
-    return;
-  }
-
-  console.log({timeoutId, msDelay})
-  
-
   if (store.play) {
     function loop() {
-      store.setNextPopulation();
+      store.updateNextPopulation();
 
       if (msDelay > 0) {
         timeoutId =
@@ -46,7 +39,7 @@ watchEffect(() => {
             : +setTimeout(loop, msDelay);
       }
     }
-    
+
     if (msDelay > 0) {
       loop();
     }
