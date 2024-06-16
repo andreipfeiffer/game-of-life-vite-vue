@@ -15,38 +15,40 @@ import Life from './Life.vue';
 import LifeCanvas from './LifeCanvas.vue';
 import { getPresets } from '../presets';
 import { store, population } from '../store';
-import { watchEffect } from 'vue';
+import { watch } from 'vue';
 import { LifetimeValues } from '../constants';
 
 const presets = getPresets();
 
 let timeoutId: number;
 
-watchEffect(() => {
-  const msDelay = store.play ? LifetimeValues[store.lifetime].value : 0;
+watch(
+  [() => store.play, () => store.lifetime],
+  ([play, lifetime]) => {
+    const msDelay = play ? LifetimeValues[+lifetime].value : 0;
 
-  clearTimeout(timeoutId);
-  cancelAnimationFrame(timeoutId);
+    window.clearTimeout(timeoutId);
+    window.cancelAnimationFrame(timeoutId);
 
-  if (store.play) {
     function loop() {
       store.updateNextPopulation();
-
+      
       if (msDelay > 0) {
         timeoutId =
-          msDelay < 16
-            ? requestAnimationFrame(loop)
-            : +setTimeout(loop, msDelay);
+        msDelay < 16
+        ? window.requestAnimationFrame(loop)
+        : +window.setTimeout(loop, msDelay);
       }
     }
-
-    if (msDelay > 0) {
-      loop();
+    
+    if (play) {
+      if (msDelay > 0) {
+        loop();
+      }
+    } else {
+      (msDelay < 16) ? window.cancelAnimationFrame(timeoutId) : window.clearTimeout(timeoutId)
     }
-  } else {
-    (msDelay < 16) ? cancelAnimationFrame(timeoutId) : clearTimeout(timeoutId)
-  }
-});
+  }, {onTrigger: (e) => console.log(e)});
 </script>
 
 <style>
