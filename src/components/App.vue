@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Game of Life, using Vue</h1>
     <Settings :presets="presets" />
     <hr />
     <div :class="{ playing: store.play }">
@@ -112,5 +113,10 @@ button.secondary {
   font-weight: normal;
   border-color: #666666;
   color: #666666;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-top: 0;
 }
 </style>
