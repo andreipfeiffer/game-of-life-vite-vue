@@ -48,5 +48,6 @@ watch([() => props.population, () => props.size], drawCanvas);
 <style scoped>
 .canvas {
   border: 1px solid black;
+  image-rendering: pixelated;
 }
 </style>
