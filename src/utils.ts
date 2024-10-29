@@ -51,7 +51,6 @@ export function getNextPopulation(grid: Grid): Grid {
   
   for (let row = 0; row < grid.length; row += 1) {
     next[row] = [];
-    window.performance.mark("rowStart");
 
     for (let col = 0; col < grid[row].length; col += 1) {
       const isAlive = !!grid[row][col];
@@ -66,13 +65,11 @@ export function getNextPopulation(grid: Grid): Grid {
         next[row][col] = false;
       }
     }
-    window.performance.mark("rowEnd");
-    window.performance.measure("🚣 row", "rowStart", "rowEnd");
   }
 
   window.performance.mark("getNextPopulationEnd");
   window.performance.measure(
-    "🐌 getNextPopulation",
+    "⏳ getNextPopulation",
     "getNextPopulationStart",
     "getNextPopulationEnd"
   );
