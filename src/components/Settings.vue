@@ -11,23 +11,23 @@
       <option value="html">HTML</option>
       <option value="canvas">Canvas</option>
     </select>
-    Width: 
+    <br />
+    <br />
+    Grid: 
     <input
       type="number"
       v-model.number="store.width"
       maxlength="3"
       class="input"
-      readonly
     />
-    Height: 
+    &times; 
     <input
       type="number"
       v-model.number="store.height"
       maxlength="3"
       class="input"
-      readonly
     />
-    Size: 
+    Cell: 
     <input
       type="number"
       v-model.number="store.size"
@@ -47,7 +47,7 @@
         type="range"
         v-model.number="store.lifetime"
         min="1"
-        max="5"
+        v-bind:max="Object.keys(LifetimeValues).length"
         list="lifetime-options"
         style="margin: 0 1em;"
       />
@@ -96,6 +96,6 @@ function reloadPreset() {
 
 <style scoped>
 .input {
-  width: 50px;
+  width: 4em;
 }
 </style>

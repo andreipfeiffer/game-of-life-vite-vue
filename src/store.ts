@@ -13,7 +13,6 @@ export const store = reactive({
   height: 10,
   size: 30,
   preset: "",
-  // population,
 
   togglePlay() {
     this.play = !this.play;

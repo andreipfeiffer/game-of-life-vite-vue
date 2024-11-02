@@ -69,7 +69,7 @@ body {
 }
 
 html {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 input:not([type="range"]):not([type="checkbox"]),
@@ -88,7 +88,8 @@ textarea {
 
   border-radius: 0;
   font-size: 1rem;
-  padding: 0.5rem 0.75rem;
+  height: 2.25em;
+  padding: 0 0.75rem;
   font-weight: bold;
 
   box-sizing: content-box;

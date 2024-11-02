@@ -26,8 +26,10 @@ const style = computed(() => ({ '--size': `${props.size}px` }));
   display: flex;
   flex-direction: column;
   width: fit-content;
+  box-shadow: 0 0 0 1px#00000022;
 }
 .life.small-size {
   border: 1px black solid;
+  box-shadow: none;
 }
 </style>

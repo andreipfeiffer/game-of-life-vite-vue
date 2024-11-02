@@ -14,8 +14,7 @@ defineProps<{
 .cell {
   display: inline-block;
   background-color: white;
-  border: 1px black solid;
-  margin: 1px;
+  box-shadow: inset 0 0 0 1px#00000022;
   padding: 0;
   width: var(--size);
   height: var(--size);
@@ -24,7 +23,7 @@ defineProps<{
   background-color: black;
 }
 .small-size .cell {
-  border: 0;
+  box-shadow: none;
   margin: 0;
 }
 </style>
