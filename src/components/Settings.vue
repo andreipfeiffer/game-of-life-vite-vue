@@ -16,21 +16,21 @@
     Grid: 
     <input
       type="number"
-      :value="store.width"
+      v-model.number="store.width"
       maxlength="3"
       class="input"
     />
     &times; 
     <input
       type="number"
-      :value="store.height"
+      v-model.number="store.height"
       maxlength="3"
       class="input"
     />
     Cell: 
     <input
       type="number"
-      :value="store.size"
+      v-model.number="store.size"
       maxlength="3"
       class="input"
     />
@@ -45,7 +45,7 @@
       </button>
       <input
         type="range"
-        :value="store.lifetime"
+        v-model.number="store.lifetime"
         min="1"
         v-bind:max="Object.keys(LifetimeValues).length"
         list="lifetime-options"
