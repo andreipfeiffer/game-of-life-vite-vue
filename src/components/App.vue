@@ -95,6 +95,11 @@ textarea {
   box-sizing: content-box;
 }
 
+button:active {
+  background-color: black;
+  color: white;
+}
+
 .input {
   width: 4em;
 }
