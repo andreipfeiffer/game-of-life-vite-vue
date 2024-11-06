@@ -1,9 +1,9 @@
 import { reactive, shallowRef } from "vue";
 import { DEFAULT_SIZE, LifetimeValues } from "./constants";
 import { getInitialState, getNextPopulation } from "./utils";
-import { Grid, Preset } from "./types";
+import { Preset } from "./types";
 
-export const population = shallowRef<Grid>(getInitialState([], 1, 1))
+export const population = shallowRef(getInitialState([], 1, 1))
 
 export const store = reactive({
   play: false,
